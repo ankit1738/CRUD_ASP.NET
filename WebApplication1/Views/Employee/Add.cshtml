@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add A new Employee</h2>
+
+<form id="form1" method="post" action="/Employee/Add" 
+    enctype="application/x-www-form-urlencoded">
+    <div class="form-group">
+        <label for="Id">User Id</label>
+        <input type="text" class="form-control" name="UserId" placeholder="Enter User Id">
+    </div>
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" name="Name" placeholder="Name">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

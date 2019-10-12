@@ -1,0 +1,16 @@
+﻿@model WebApplication1.Models.Project
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a project</h2>
+
+@using (Html.BeginForm("Add", "Project"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control"}) 
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

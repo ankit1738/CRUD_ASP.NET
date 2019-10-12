@@ -1,0 +1,34 @@
+﻿@using WebApplication1.Models
+@*@model WebApplication1.ViewModel.EmployeeDetails*@
+@model WebApplication1.Models.Employee
+@{
+    ViewBag.Title = "EmployeeDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employee Details Page</h2>
+
+<table class="table">
+    <tr>
+        <th>UserId:</th>
+        <td>@Model.UserId</td>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr style=" vertical-align: baseline;
+ ">
+        <th>List of projects: </th>
+        <td>
+            @foreach (var proj in Model.Projects)
+            {
+                <p>@proj.Name</p>
+            }
+            @Html.ActionLink("Add in project", "AllProjects", "Project", null, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+</table>
+
+
+

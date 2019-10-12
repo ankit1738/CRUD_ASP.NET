@@ -1,0 +1,37 @@
+﻿@using WebApplication1.Models
+@model WebApplication1.ViewModel.EmployeeDetails
+@{
+    ViewBag.Title = "AddEmployeesToProj";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Employees To <b>@Model.Project.Name</b></h2>
+
+<h3>Select Employees</h3>
+@{ 
+    bool hasProject;
+}
+
+@using (Html.BeginForm("AddEmployeesToProj_post", "Project" ))
+{
+    <ul>
+        @foreach (Employee emp in Model.Employees)
+        {
+        <li>
+            @{ hasProject = emp.Projects.Contains(Model.Project); }
+            @if (hasProject)
+            {
+                @Html.CheckBox(emp.Name, hasProject, new { @disabled = "disabled", @class= "form-check-input", value = emp.UserId, Name = "employeeIds"  })
+                @Html.Label(emp.Name, new { @class= "form-check-input" })
+                @Html.RouteLink(" (Remove)", "RemoveEmployeeFromProj", new { id = Model.Project.Id, empId = emp.Id }, new { @class ="text-danger"})
+            }
+            else
+            {
+                @Html.CheckBox(emp.Name, hasProject, new { @class= "form-check-input", value = emp.UserId, Name = "employeeIds" })
+                @Html.Label(emp.Name, new { @class= "form-check-input" })                
+            }
+        </li>              
+        }        
+    </ul>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

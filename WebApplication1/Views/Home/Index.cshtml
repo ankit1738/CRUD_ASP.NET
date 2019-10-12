@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <ul class="list-group">
+        <li class="list-group-item active">Employee Actions</li>
+        <li class="list-group-item">@Html.ActionLink("View Employees", "ViewEmployees", "Employee") </li>
+        <li class="list-group-item">@Html.ActionLink("Add Employees", "Add", "Employee")</li>
+        <li class="list-group-item active">Projects Actions</li>
+        <li class="list-group-item">@Html.ActionLink("View all projects", "AllProjects", "Project") </li>
+    </ul>

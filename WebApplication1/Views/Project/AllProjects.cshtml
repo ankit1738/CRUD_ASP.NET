@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebApplication1.Models.Project>
+@{
+    ViewBag.Title = "AllProjects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllProjects</h2>
+<h5>Click on the project name to know details</h5>
+<table class="table">
+    <tr>
+        <th>Project Id</th>
+        <th>Project Name</th>
+    </tr>
+    
+    @foreach (var proj in Model)
+    {
+        <tr>            
+            <td>@proj.Id</td>
+            <td>@Html.ActionLink(proj.Name, "Details", "Project", new { id = proj.Id }, null)</td>            
+        </tr>
+    }
+</table>
+@Html.ActionLink("Add Project", "Add", "Project", null, new { @class = "btn btn-primary"})
+
+

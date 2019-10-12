@@ -1,0 +1,47 @@
+﻿    @model  IEnumerable<WebApplication1.Models.Employee>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Employees</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Actions
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Employee", new { id = item.UserId }, null) |
+                @Html.ActionLink("Delete", "Delete", "Employee", new { id = item.UserId }, null) |
+                @Html.ActionLink("Details", "Details", "Employee", new { id = item.UserId }, null)
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@model WebApplication1.Models.Project
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/project.js")"></script>
+
+}*@
+
+<h2>Project Details</h2>
+
+<ul>
+    <li><h4>Name: @Model.Name</h4></li>
+</ul>
+
+<h2>Employees in Project</h2>
+
+<ul>
+
+    @foreach (var emp in Model.Employees)
+    {
+        <li>
+            <h4>@emp.Name 
+                @Html.RouteLink(" (Remove)", "RemoveEmployeeFromProj", new { id = Model.Id, empId = emp.Id }, new { @class = "text-danger" })
+            </h4>
+        </li>
+
+        
+
+
+    }
+
+</ul>
+
+@*@Url.RouteUrl("AddEmployeesToProj", new { controller = "Project", action = "AddEmployeesToProj", id = Model.Id, empId = emp.Id })*@
+@Html.RouteLink("Add Employees", "AddEmployeesToProj", new { id = Model.Id }, new { @class = "btn btn-primary" })
+
